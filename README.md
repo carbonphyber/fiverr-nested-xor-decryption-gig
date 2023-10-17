@@ -1,2 +1,66 @@
-# fiverr-nested-xor-decryption-gig
-Example decryption task for Fiverr project
+# Fiverr project example decryption task
+
+## Problem statement
+Search for the plaintext to an encrypted block of text which has been XORed many times with different keys.
+
+The goal is to find a decryption fitness function -- an algorithm to quickly search a large search space and detect if ciphertext was correctly decoded. This algo will then be used to find the best keys and the plaintext.
+
+## Gig Requirements
+The gig is to come up with a fitness function -- an algorithm to determine which key is most likely to be successful.
+
+The *algorithm* must be delivered, not just the keys or plaintext. You are solving an example decryption problem, not the real one. I must be able to replicate your algorithm with the real ciphertext to find the real plaintext.
+
+You may choose any common programming language, but I would prefer C/C++, CUDA C/C++, Python, or JavaScript.
+
+## Encryption Algorithm
+The encryption algorithm consists of multiple rounds of XOR with different keys. The algorithm makes a decryption pattern like this:
+
+```
+    ????????????????????????????????????????????????????????????????????????????????????
+XOR APPLEAPPLEAPPLEAPPLEAPPLEAPPLEAPPLEAPPLEAPPLEAPPLEAPPLEAPPLEAPPLEAPPLEAPPLEAPPLEAPPL
+    ====================================================================================
+    THIS PL?????????????????????????????????????????????????????????????????????????????
+XOR BANANABANANABANANABANANABANANABANANABANANABANANABANANABANANABANANABANANABANANABANANA
+    ====================================================================================
+    *******AINTEX???????????????????????????????????????????????????????????????????????
+XOR COOKIECOOKIECOOKIECOOKIECOOKIECOOKIECOOKIECOOKIECOOKIECOOKIECOOKIECOOKIECOOKIECOOKIE
+    ====================================================================================
+    *************T IS E?????????????????????????????????????????????????????????????????
+XOR DANCEDANCEDANCEDANCEDANCEDANCEDANCEDANCEDANCEDANCEDANCEDANCEDANCEDANCEDANCEDANCEDANC
+    ====================================================================================
+    *******************NGLIS????????????????????????????????????????????????????????????
+XOR EMOJIEMOJIEMOJIEMOJIEMOJIEMOJIEMOJIEMOJIEMOJIEMOJIEMOJIEMOJIEMOJIEMOJIEMOJIEMOJIEMOJ
+    ====================================================================================
+    ************************H, WITH PUNCTUATION A???????????????????????????????????????
+XOR FACEFACEFACEFACEFACEFACEFACEFACEFACEFACEFACEFACEFACEFACEFACEFACEFACEFACEFACEFACEFACE
+    ====================================================================================
+    *********************************************ND HEXAD???????????????????????????????
+XOR GARDENGARDENGARDENGARDENGARDENGARDENGARDENGARDENGARDENGARDENGARDENGARDENGARDENGARDEN
+    ====================================================================================
+    *****************************************************ECIMAL?????????????????????????
+XOR HIPPOPOTAMUSHIPPOPOTAMUSHIPPOPOTAMUSHIPPOPOTAMUSHIPPOPOTAMUSHIPPOPOTAMUSHIPPOPOTAMUS
+    ====================================================================================
+    *********************************************************** STRING??????????????????
+XOR IDYLLICIDYLLICIDYLLICIDYLLICIDYLLICIDYLLICIDYLLICIDYLLICIDYLLICIDYLLICIDYLLICIDYLLIC
+    ====================================================================================
+    ******************************************************************S. 0xBAD0F????????
+XOR JACKPOTJACKPOTJACKPOTJACKPOTJACKPOTJACKPOTJACKPOTJACKPOTJACKPOTJACKPOTJACKPOTJACKPOT
+    ====================================================================================
+    ****************************************************************************F1CEF00D
+
+PLAINTEXT
+    THIS PLAINTEXT IS ENGLISH, WITH PUNCTUATION AND HEXADECIMAL STRINGS. 0xBAD0FF1CEF00D
+```
+
+### Explanation
+In this example, there are 10 rounds of XOR encryption with the following keys: APPLE, BANANA, COOKIE, DANCE, EMOJI, FACE, GARDEN, HIPPOPOTAMUS, IDYLLIC, JACKPOT. The keys are of varying and unknown length. The real keys could include ASCII letters (as in this example) or be mixed with other characters including non-printable bytes.
+
+This example is 84 bytes of cyphertext / plaintext length, but the real puzzle is over 5000 bytes, so frequency analysis should be useful.
+
+The strings "?????" in the example represent ciphertext bytes (not necessarily human-readable letters). The strings "*****" represent text that has already been decrypted, thus further decryption/analysis would be wasted effort.
+
+## Decryption Parameters / Hints
+Plaintext is mostly English text (ASCII letters) with some grammar characters (whitespace, punctuation, numbers). It is likely to inlude hexadecimal or octal strings.
+
+
+
